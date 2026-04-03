@@ -1,0 +1,22 @@
+{
+    "7d": [
+      { "name": "Mon", "clicks": 120 },
+      { "name": "Tue", "clicks": 210 },
+      { "name": "Wed", "clicks": 180 },
+      { "name": "Thu", "clicks": 250 },
+      { "name": "Fri", "clicks": 300 },
+      { "name": "Sat", "clicks": 280 },
+      { "name": "Sun", "clicks": 350 }
+    ],
+    "30d": [
+      { "name": "Week 1", "clicks": 800 },
+      { "name": "Week 2", "clicks": 950 },
+      { "name": "Week 3", "clicks": 1000 },
+      { "name": "Week 4", "clicks": 1200 }
+    ],
+    "90d": [
+      { "name": "Month 1", "clicks": 3200 },
+      { "name": "Month 2", "clicks": 4000 },
+      { "name": "Month 3", "clicks": 3800 }
+    ]
+  }
