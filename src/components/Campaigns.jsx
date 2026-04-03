@@ -35,7 +35,7 @@ export default function Campaigns() {
   useEffect(() => {
     const fetchHealth = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/health');
+        const res = await fetch('https://ad-flow-backend.vercel.app/api/health');
         const data = await res.json();
         setHealth(data?.status || "");
       } catch (error) {

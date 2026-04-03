@@ -2,7 +2,7 @@
   import { Bell, X } from "lucide-react";
   import { io } from "socket.io-client";
 
-  const socket = io("http://localhost:5000");
+  const socket = io("https://ad-flow-backend.vercel.app");
 
   export default function NotificationCenter() {
     const [notifications, setNotifications] = useState([]);
@@ -13,7 +13,7 @@
     useEffect(() => {
       const fetchAlerts = async () => {
         try {
-          const response = await fetch("http://localhost:5000/api/alerts", {
+          const response = await fetch("https://ad-flow-backend.vercel.app/api/alerts", {
             headers: {
               'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
@@ -38,7 +38,7 @@
       e.stopPropagation();
 
       try {
-        await fetch(`http://localhost:5000/api/alerts/${id}`, {
+        await fetch(`https://ad-flow-backend.vercel.app/api/alerts/${id}`, {
           method: 'DELETE',
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`

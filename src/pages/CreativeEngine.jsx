@@ -34,7 +34,6 @@ export default function AILab() {
       setSystemMetrics(prev => ({
         ...prev,
         latency: parseFloat((Math.random() * (0.55 - 0.35) + 0.35).toFixed(2)),
-        // Jitter the sync percentage slightly for realism
         sync: parseFloat((98 + Math.random() * 1.8).toFixed(1))
       }));
     }, 2500);
@@ -74,7 +73,7 @@ export default function AILab() {
               </div>
             </div>
 
-            {/* Neural Sync Card (The Replacement) */}
+            {/* Neural Sync Card */}
             <div className="p-4 rounded-2xl bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 flex items-center gap-4 shadow-sm dark:shadow-inner">
               <div className="w-10 h-10 rounded-full bg-amber-500/10 flex items-center justify-center text-amber-600 dark:text-amber-400">
                 <Cpu size={18} />

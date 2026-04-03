@@ -35,7 +35,7 @@ export default function CreativeBriefBuilder() {
     setError("");
 
     try {
-      const response = await fetch("http://localhost:5000/api/generate-brief", {
+      const response = await fetch("https://ad-flow-backend.vercel.app/api/generate-brief", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

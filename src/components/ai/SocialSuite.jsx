@@ -9,7 +9,7 @@ export default function SocialSuite() {
   const getSocial = async () => {
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:5000/api/generate/social', { 
+      const response = await fetch('https://ad-flow-backend.vercel.app/api/generate/social', { 
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
