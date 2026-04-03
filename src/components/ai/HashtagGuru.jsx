@@ -21,10 +21,16 @@ export default function HashtagGuru() {
       });
   
       const data = await response.json();
+
+      if (!response.ok || !data.hashtags) {
+        console.error("Server Error:", data.error);
+        setHashtags([]);
+        return;
+      }
       
       const rawTags = data.hashtags.match(/#[\w\d]+/g) || [];
-      
       setHashtags(rawTags.slice(0, 10));
+
     } catch (err) {
       console.error("Hashtag Error:", err);
     } finally {

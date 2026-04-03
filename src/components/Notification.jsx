@@ -11,6 +11,8 @@
     const unreadCount = notifications.length;
 
     useEffect(() => {
+      let isMounted = true;
+
       const fetchAlerts = async () => {
         try {
           const response = await fetch("https://ad-flow-backend.vercel.app/api/alerts", {
@@ -19,7 +21,7 @@
             }
           });
           const data = await response.json();
-          if (Array.isArray(data)) setNotifications(data);
+          if (isMounted && Array.isArray(data)) setNotifications(data);
         } catch (err) {
           console.error("Failed to fetch alerts:", err);
         }
@@ -27,11 +29,16 @@
 
       fetchAlerts();
 
-      socket.on("new_notification", (notification) => {
+      const handleNewNotification = (notification) => {
         setNotifications((prev) => [notification, ...prev]);
-      });
+      };
 
-      return () => socket.off("new_notification");
+      socket.on("new_notification", handleNewNotification);
+
+      return () => {
+        isMounted = false;
+        socket.off("new_notification", handleNewNotification);
+      };
     }, []);
 
     const deleteNotification = async (e, id) => {
