@@ -11,7 +11,7 @@ export default function Copywriter() {
     setOutput("");
     
     try {
-      const response = await fetch('http://localhost:5000/api/generate/copy', {
+      const response = await fetch('https://ad-flow-backend.vercel.app/api/generate/copy', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

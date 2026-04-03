@@ -17,7 +17,7 @@ export default function SocialSuite() {
           campaign_goal: "Brand Awareness",
           brand_voice: "Friendly"
         })
-      }); 
+      });
       const data = await response.json();
       if (data.captions) {
         const cleaned = data.captions
