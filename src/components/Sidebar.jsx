@@ -4,8 +4,6 @@ import {
   LayoutDashboard, Zap, Users, Cog, Sparkles,
   FileText, LogOut, ChevronLeft, ChevronRight 
 } from 'lucide-react';
-import { io } from "socket.io-client"
-
 export default function Sidebar({ isOpen, setIsOpen }) {
 
   const navigate = useNavigate();
