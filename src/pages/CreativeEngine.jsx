@@ -49,7 +49,7 @@ export default function AILab() {
   }, []);
 
   return (
-    <div className="flex min-h-screen bg-[#f8fafc] dark:bg-[#02040a] text-slate-900 dark:text-slate-200 selection:bg-cyan-500/30 font-mono transition-colors duration-300">
+    <div className="flex min-h-screen bg-[#f8fafc] dark:bg-[#02040a] text-slate-900 dark:text-slate-200 selection:bg-cyan-500/30 transition-colors duration-300">
       <div className="fixed inset-0 z-0 opacity-[0.03] dark:opacity-20 pointer-events-none" 
            style={{ backgroundImage: `radial-gradient(#1e293b 1px, transparent 1px)`, backgroundSize: '30px 30px' }}></div>
 
