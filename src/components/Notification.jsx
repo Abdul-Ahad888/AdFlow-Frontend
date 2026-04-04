@@ -1,15 +1,9 @@
   import React, { useState, useEffect } from "react";
   import { Bell, X } from "lucide-react";
-  import { io } from "socket.io-client";
 
   const API_BASE = import.meta.env.VITE_API_URL || "https://ad-flow-backend.vercel.app";
 
-  // Vercel serverless has no real WebSocket support; Socket.IO's upgrade to wss:// fails and spams the console.
-  // Polling-only avoids that. Serverless instances also don't share in-memory rooms, so we refetch alerts on an interval.
-  const socket = io(API_BASE, {
-    transports: ["polling"],
-    upgrade: false,
-  });
+  // Socket.IO does not work on Vercel: requests hop between instances, so session IDs 400. Alerts use REST + polling only.
 
   export default function NotificationCenter() {
     const [notifications, setNotifications] = useState([]);
@@ -35,18 +29,11 @@
       };
 
       fetchAlerts();
-      const pollId = setInterval(fetchAlerts, 45_000);
-
-      const handleNewNotification = (notification) => {
-        setNotifications((prev) => [notification, ...prev]);
-      };
-
-      socket.on("new_notification", handleNewNotification);
+      const pollId = setInterval(fetchAlerts, 30_000);
 
       return () => {
         isMounted = false;
         clearInterval(pollId);
-        socket.off("new_notification", handleNewNotification);
       };
     }, []);
 
