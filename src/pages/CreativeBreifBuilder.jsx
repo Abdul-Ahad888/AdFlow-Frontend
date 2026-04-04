@@ -217,33 +217,33 @@ export default function CreativeBriefBuilder() {
             <AnimatePresence mode="wait">
               {step === 1 && (
                 <motion.div key="step1" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="space-y-4">
-                  <input name="clientName" placeholder="Client Name *" value={formData.clientName} onChange={handleChange} className="w-full p-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" />
-                  <input name="industry" placeholder="Industry *" value={formData.industry} onChange={handleChange} className="w-full p-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" />
-                  <input name="website" placeholder="Website" value={formData.website} onChange={handleChange} className="w-full p-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" />
-                  <input name="competitors" placeholder="Key Competitors" value={formData.competitors} onChange={handleChange} className="w-full p-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" />
+                  <input name="clientName" placeholder="Client Name *" value={formData.clientName} onChange={handleChange} className="w-full p-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all text-gray-900 placeholder-gray-400" />
+                  <input name="industry" placeholder="Industry *" value={formData.industry} onChange={handleChange} className="w-full p-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all text-gray-900 placeholder-gray-400" />
+                  <input name="website" placeholder="Website" value={formData.website} onChange={handleChange} className="w-full p-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all text-gray-900 placeholder-gray-400" />
+                  <input name="competitors" placeholder="Key Competitors" value={formData.competitors} onChange={handleChange} className="w-full p-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all text-gray-900 placeholder-gray-400" />
                 </motion.div>
               )}
 
               {step === 2 && (
                 <motion.div key="step2" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="space-y-4">
-                  <select name="objective" value={formData.objective} onChange={handleChange} className="w-full p-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all bg-white">
+                  <select name="objective" value={formData.objective} onChange={handleChange} className="w-full p-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all bg-white text-gray-900">
                     <option value="">Select Objective *</option>
                     <option value="awareness">Awareness</option>
                     <option value="consideration">Consideration</option>
                     <option value="conversion">Conversion</option>
                   </select>
-                  <input name="audience" placeholder="Target Audience *" value={formData.audience} onChange={handleChange} className="w-full p-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" />
-                  <input name="budget" placeholder="Budget *" value={formData.budget} onChange={handleChange} className="w-full p-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" />
+                  <input name="audience" placeholder="Target Audience *" value={formData.audience} onChange={handleChange} className="w-full p-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all text-gray-900 placeholder-gray-400" />
+                  <input name="budget" placeholder="Budget *" value={formData.budget} onChange={handleChange} className="w-full p-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all text-gray-900 placeholder-gray-400" />
                 </motion.div>
               )}
 
               {step === 3 && (
                 <motion.div key="step3" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="space-y-4">
-                  <input name="tone" placeholder="Tone of Voice" value={formData.tone} onChange={handleChange} className="w-full p-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" />
-                  <input name="imagery" placeholder="Imagery Style" value={formData.imagery} onChange={handleChange} className="w-full p-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" />
-                  <input name="colors" placeholder="Color Direction" value={formData.colors} onChange={handleChange} className="w-full p-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" />
-                  <input name="dos" placeholder="Do's" value={formData.dos} onChange={handleChange} className="w-full p-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" />
-                  <input name="donts" placeholder="Don'ts" value={formData.donts} onChange={handleChange} className="w-full p-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" />
+                  <input name="tone" placeholder="Tone of Voice" value={formData.tone} onChange={handleChange} className="w-full p-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all text-gray-900 placeholder-gray-400" />
+                  <input name="imagery" placeholder="Imagery Style" value={formData.imagery} onChange={handleChange} className="w-full p-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all text-gray-900 placeholder-gray-400" />
+                  <input name="colors" placeholder="Color Direction" value={formData.colors} onChange={handleChange} className="w-full p-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all text-gray-900 placeholder-gray-400" />
+                  <input name="dos" placeholder="Do's" value={formData.dos} onChange={handleChange} className="w-full p-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all text-gray-900 placeholder-gray-400" />
+                  <input name="donts" placeholder="Don'ts" value={formData.donts} onChange={handleChange} className="w-full p-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all text-gray-900 placeholder-gray-400" />
                 </motion.div>
               )}
 

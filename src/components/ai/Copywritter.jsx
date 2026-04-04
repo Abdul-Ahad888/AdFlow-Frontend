@@ -34,7 +34,7 @@ export default function Copywriter() {
         } catch {
           try {
             msg = (await response.text()) || msg;
-          } catch { /* keep default */ }
+          } catch {}
         }
         setOutput(msg);
         return;
@@ -77,7 +77,7 @@ export default function Copywriter() {
               setOutput((prev) => prev + parsed.text);
             }
           } catch {
-            /* incomplete JSON; will resolve on next chunk if line was buffered wrong */
+          setOutput((prev) => prev + data);
           }
         }
       }
