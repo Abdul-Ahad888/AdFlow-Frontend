@@ -4,13 +4,13 @@ import NotificationCenter from "./Notification";
 
 export default function Navbar({ pageTitle, Icon, isDark, setIsDark }) {
   return (
-    <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-10 py-6 sticky top-0 z-30 transition-colors duration-300">
+    <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-4 sm:px-6 md:px-8 lg:px-10 py-6 sticky top-0 z-30 transition-colors duration-300">
       <div className="flex justify-between items-center">
         
         {/* Dynamic Page Title Section */}
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-3 sm:gap-4 md:gap-5">
           {Icon && (
-            <div className="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center text-white shadow-xl shadow-blue-600/30">
+            <div className="hidden md:flex w-12 h-12 bg-blue-600 rounded-2xl items-center justify-center text-white shadow-xl shadow-blue-600/30">
               <Icon size={24} />
             </div>
           )}
