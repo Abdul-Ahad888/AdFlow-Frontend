@@ -69,7 +69,19 @@
         </button>
 
         {showDropdown && (
-          <div className="absolute right-0 mt-3 w-80 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow-xl z-50 overflow-hidden">
+          // Mobile 100vw responsive dropdown
+          <div
+            className={`
+              absolute right-0 mt-3 w-80 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow-xl z-50 overflow-hidden 
+              sm:w-80
+              w-[100vw] left-1/2 -translate-x-1/2 right-auto max-w-none
+              sm:left-auto sm:translate-x-0 sm:right-0
+            `}
+            style={{
+              width: undefined, // let w-[100vw] & w-80 control width
+              maxWidth: "100vw"
+            }}
+          >
             <div className="p-4 border-b dark:border-gray-700 flex justify-between items-center bg-gray-50 dark:bg-gray-700/50">
               <h3 className="font-bold text-gray-900 dark:text-white">Campaign Alerts</h3>
               <button onClick={() => setShowDropdown(false)} className="text-gray-400 hover:text-gray-600">
