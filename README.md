@@ -1,16 +1,50 @@
-# React + Vite
+# Ad Flow — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Single-page app for advertising workflows: dashboard analytics, clients, campaigns, creative briefs, and a creative toolkit UI. Light and dark themes, responsive layout.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **React 19** + **Vite 8**
+- **React Router** (protected routes)
+- **Tailwind CSS**
+- **Framer Motion**, **Lucide React**, **Recharts**
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Login** — auth flow with token stored in `localStorage`
+- **Dashboard** — KPI cards, charts, recent campaign table (mock data)
+- **Clients** & **Campaigns** — agency-style management views
+- **Creative Brief Builder** — step-by-step brief workflow
+- **Creative Engine** — copy, social, and hashtag assistant panels
+- **Settings** — preferences
 
-## Expanding the ESLint configuration
+## Prerequisites
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Node.js** 18+
+
+## Setup
+
+```bash
+cd client
+npm install
+npm run dev
+```
+
+## Scripts
+
+| Command           | Description              |
+|-------------------|--------------------------|
+| `npm run dev`     | Dev server (Vite + HMR)  |
+| `npm run build`   | Production build         |
+| `npm run preview` | Preview production build |
+| `npm run lint`    | ESLint                   |
+
+## Project layout
+
+- `src/pages/` — screens (login, dashboard, brief builder, creative engine)
+- `src/components/` — layout, domain UI, and creative subcomponents
+- `src/mock/` — sample KPI and table data for the dashboard
+
+## License
+
+Private / unlicensed unless you add a `LICENSE` file at the repository root.
