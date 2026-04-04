@@ -8,7 +8,7 @@
   export default function NotificationCenter() {
     const [notifications, setNotifications] = useState([]);
     const [showDropdown, setShowDropdown] = useState(false);
-    
+
     const unreadCount = notifications.length;
 
     useEffect(() => {
@@ -54,8 +54,16 @@
       }
     };
 
+    // Add overflow-x-auto (tailwind) to outermost parent to make page horizontally scrollable when needed
+    React.useEffect(() => {
+      document.body.classList.add("overflow-x-auto");
+      return () => {
+        document.body.classList.remove("overflow-x-auto");
+      };
+    }, []);
+
     return (
-      <div className="relative">
+      <div className="relative z-50">
         <button
           onClick={() => setShowDropdown(!showDropdown)}
           className="relative p-2 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
@@ -69,16 +77,14 @@
         </button>
 
         {showDropdown && (
-          // Mobile 100vw responsive dropdown
           <div
             className={`
-              absolute right-0 mt-3 w-80 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow-xl z-50 overflow-hidden 
+              absolute left-0 mt-3 w-80 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow-xl z-50 overflow-hidden
               sm:w-80
-              w-[100vw] left-1/2 -translate-x-1/2 right-auto max-w-none
-              sm:left-auto sm:translate-x-0 sm:right-0
+              w-[100vw] max-w-none
+              sm:left-0
             `}
             style={{
-              width: undefined, // let w-[100vw] & w-80 control width
               maxWidth: "100vw"
             }}
           >
