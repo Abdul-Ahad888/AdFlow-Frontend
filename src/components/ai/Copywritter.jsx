@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Send, Loader2 } from 'lucide-react';
 
+const API_BASE = import.meta.env.VITE_API_URL || 'https://ad-flow-backend.vercel.app';
+
 export default function Copywriter() {
   const [input, setInput] = useState({ product: '', tone: 'Professional', platform: 'Facebook' });
   const [output, setOutput] = useState("");
@@ -11,7 +13,7 @@ export default function Copywriter() {
     setOutput("");
     
     try {
-      const response = await fetch('https://ad-flow-backend.vercel.app/api/generate/copy', {
+      const response = await fetch(`${API_BASE}/api/generate/copy`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -22,27 +24,65 @@ export default function Copywriter() {
         }),
       });
 
+      if (!response.ok) {
+        let msg = `Request failed (${response.status}).`;
+        try {
+          const errBody = await response.json();
+          if (errBody?.error || errBody?.message) {
+            msg = errBody.message || errBody.error || msg;
+          }
+        } catch {
+          try {
+            msg = (await response.text()) || msg;
+          } catch { /* keep default */ }
+        }
+        setOutput(msg);
+        return;
+      }
+
+      if (!response.body) {
+        setOutput('No response body from server. Streaming may be disabled on the host.');
+        return;
+      }
+
       const reader = response.body.getReader();
       const decoder = new TextDecoder();
+      let sseBuffer = '';
 
       while (true) {
         const { value, done } = await reader.read();
         if (done) break;
-        const chunk = decoder.decode(value);
-        const lines = chunk.split('\n');
-        lines.forEach(line => {
-          if (line.startsWith('data: ')) {
-            const data = line.replace('data: ', '');
-            if (data === '[DONE]') return;
-            try {
-              const parsed = JSON.parse(data);
-              setOutput(prev => prev + parsed.text);
-            } catch (e) {}
+        sseBuffer += decoder.decode(value, { stream: true });
+        const lines = sseBuffer.split('\n');
+        sseBuffer = lines.pop() ?? '';
+
+        for (const line of lines) {
+          const trimmed = line.trim();
+          if (!trimmed.startsWith('data:')) continue;
+          const data = trimmed.slice(5).trimStart();
+          if (data === '[DONE]') continue;
+          try {
+            const parsed = JSON.parse(data);
+            if (parsed.error != null) {
+              const errMsg =
+                typeof parsed.message === 'string'
+                  ? parsed.message
+                  : typeof parsed.error === 'string'
+                    ? parsed.error
+                    : 'Stream error from server.';
+              setOutput((prev) => (prev ? `${prev}\n\n` : '') + errMsg);
+              continue;
+            }
+            if (typeof parsed.text === 'string' && parsed.text.length > 0) {
+              setOutput((prev) => prev + parsed.text);
+            }
+          } catch {
+            /* incomplete JSON; will resolve on next chunk if line was buffered wrong */
           }
-        });
+        }
       }
     } catch (err) {
-      setOutput("Connection failed. Check backend.");
+      setOutput("Connection failed. Check backend URL, CORS, and that GEMINI_API_KEY is set on Vercel.");
     } finally {
       setLoading(false);
     }
