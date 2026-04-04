@@ -59,7 +59,7 @@ export default function Campaigns() {
           setIsDark={setIsDark}/>
 
         {/* Content Wrapper */}
-        <div className="flex-1 p-6 md:p-12 max-w-[1700px] mx-auto w-full">
+        <div className="flex-1 p-4 sm:p-6 md:p-12 max-w-[1700px] mx-auto w-full">
 
           <div className="mb-16 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
             <div className="max-w-2xl">
