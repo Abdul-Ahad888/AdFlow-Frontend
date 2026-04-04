@@ -143,13 +143,13 @@ export default function CreativeBriefBuilder() {
   return (
     <div className="flex flex-col lg:flex-row min-h-screen bg-gray-50">
       <Link to={"/dashboard"}>
-        <i className="fixed top-4 h-10 w-10 left-4 z-50 flex items-center justify-center rounded-full bg-white shadow-md hover:bg-gray-100 transition-colors cursor-pointer">
+        <i className="fixed top-4 h-10 w-10 left-4 z-50 flex items-center justify-center rounded-full bg-white/60 backdrop-blur-md shadow-md hover:bg-white/80 transition-colors cursor-pointer">
           <ChevronLeft size={20} className="text-gray-700" />
         </i>
       </Link>
 
       {/* Left Column */}
-      <div className="lg:w-1/2 bg-gradient-to-b from-indigo-700 to-blue-900 text-white p-12 flex flex-col justify-center">
+      <div className="lg:w-1/2 bg-gradient-to-b from-indigo-700 to-blue-900 text-white p-6 lg:p-12 flex flex-col justify-center">
         <h1 className="text-5xl font-bold mb-4">AI Creative Brief Builder</h1>
         <p className="text-lg mb-6 opacity-90">
           Quickly create professional, structured campaign briefs with AI assistance.
@@ -170,7 +170,7 @@ export default function CreativeBriefBuilder() {
       </div>
 
       {/* Right Column */}
-      <div className="lg:w-1/2 bg-white h-screen overflow-y-auto p-12 flex flex-col relative">
+      <div className="lg:w-1/2 bg-white h-screen overflow-y-auto p-6 lg:p-12 flex flex-col relative">
         {/* Step Indicator */}
         <div className="flex justify-between mb-12 flex-shrink-0">
           {stepLabels.map((label, idx) => {
