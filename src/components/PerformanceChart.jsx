@@ -1,6 +1,6 @@
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Area, AreaChart } from "recharts";
 import ChartTabs from "./ChartTabs";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import performanceData from "../mock/performanceData.json";
 
 export default function PerformanceChart() {
@@ -11,6 +11,7 @@ export default function PerformanceChart() {
   ];
   const [selectedTab, setSelectedTab] = useState("7d");
   const filteredData = performanceData[selectedTab] || [];
+  const chartContainerRef = useRef(null);
 
   return (
     <div
@@ -39,7 +40,15 @@ export default function PerformanceChart() {
         />
       </div>
 
-      <div className="w-full h-56 sm:h-64 md:h-72 xl:h-80 2xl:h-96">
+      <div
+        className="w-full h-56 sm:h-64 md:h-72 xl:h-80 2xl:h-96"
+        tabIndex={-1}
+        ref={chartContainerRef}
+        onMouseDown={e => {
+          e.preventDefault();
+        }}
+        style={{ outline: "none" }}
+      >
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart data={filteredData} margin={{ top: 10, right: 16, left: 0, bottom: 0 }}>
             <defs>
@@ -48,7 +57,7 @@ export default function PerformanceChart() {
                 <stop offset="100%" stopColor="#3b82f6" stopOpacity={0} />
               </linearGradient>
             </defs>
-            <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" dark:stroke="#374151" opacity={0.5} />
+            <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" opacity={0.5} />
             <XAxis
               dataKey="name"
               stroke="#9ca3af"
