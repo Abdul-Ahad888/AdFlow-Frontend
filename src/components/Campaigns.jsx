@@ -93,9 +93,11 @@ export default function Campaigns() {
             <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/10 to-indigo-600/10 rounded-[3rem] blur-2xl opacity-100"></div>
 
             <div className="relative bg-white dark:bg-slate-900 rounded-[3rem] border border-slate-200 dark:border-slate-800/50 shadow-2xl overflow-hidden">
-               <div className="p-8">
+              <div className="p-8">
+                <div className="w-full overflow-x-auto">
                   <Table data={filteredCampaigns} />
-               </div>
+                </div>
+              </div>
             </div>
           </div>
 
