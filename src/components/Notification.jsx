@@ -2,7 +2,14 @@
   import { Bell, X } from "lucide-react";
   import { io } from "socket.io-client";
 
-  const socket = io("https://ad-flow-backend.vercel.app");
+  const API_BASE = import.meta.env.VITE_API_URL || "https://ad-flow-backend.vercel.app";
+
+  // Vercel serverless has no real WebSocket support; Socket.IO's upgrade to wss:// fails and spams the console.
+  // Polling-only avoids that. Serverless instances also don't share in-memory rooms, so we refetch alerts on an interval.
+  const socket = io(API_BASE, {
+    transports: ["polling"],
+    upgrade: false,
+  });
 
   export default function NotificationCenter() {
     const [notifications, setNotifications] = useState([]);
@@ -15,7 +22,7 @@
 
       const fetchAlerts = async () => {
         try {
-          const response = await fetch("https://ad-flow-backend.vercel.app/api/alerts", {
+          const response = await fetch(`${API_BASE}/api/alerts`, {
             headers: {
               'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
@@ -28,6 +35,7 @@
       };
 
       fetchAlerts();
+      const pollId = setInterval(fetchAlerts, 45_000);
 
       const handleNewNotification = (notification) => {
         setNotifications((prev) => [notification, ...prev]);
@@ -37,6 +45,7 @@
 
       return () => {
         isMounted = false;
+        clearInterval(pollId);
         socket.off("new_notification", handleNewNotification);
       };
     }, []);
@@ -45,7 +54,7 @@
       e.stopPropagation();
 
       try {
-        await fetch(`https://ad-flow-backend.vercel.app/api/alerts/${id}`, {
+        await fetch(`${API_BASE}/api/alerts/${id}`, {
           method: 'DELETE',
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
