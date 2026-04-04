@@ -115,14 +115,14 @@ export default function AILab() {
                   </div>
                 </div>
 
-                <div className="p-6 lg:p-8">
+                <div className="p-3 lg:p-6 lg:p-8">
                   <div className="mb-8">
                     <h2 className="text-3xl font-black tracking-tighter text-slate-900 dark:text-white uppercase italic">
                       Intelligence <span className="text-cyan-600 dark:text-cyan-500">Fabric</span>
                     </h2>
                     <p className="text-slate-500 dark:text-slate-500 text-xs mt-1 tracking-widest font-bold uppercase">Ready_for_input // Streaming_enabled</p>
                   </div>
-                  <div className="min-h-[500px] bg-slate-50 dark:bg-slate-950/50 rounded-xl border border-slate-200 dark:border-slate-800/50 p-4 shadow-inner">
+                  <div className="min-h-[500px] bg-slate-50 dark:bg-slate-950/50 rounded-xl border border-slate-200 dark:border-slate-800/50 p-2 lg:p-4 shadow-inner">
                     <Copywriter />
                   </div>
                 </div>

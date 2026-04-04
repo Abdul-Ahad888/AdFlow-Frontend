@@ -295,7 +295,7 @@ export default function CreativeBriefBuilder() {
             <button
               onClick={handleNext}
               disabled={loading || !isStepValid()}
-              className={`flex items-center gap-2 px-8 py-3 rounded-xl font-bold shadow-lg transition-all ${
+              className={`flex items-center gap-2 px-3 lg:px-8 py-3 rounded-xl font-bold shadow-lg transition-all ${
                 !isStepValid()
                   ? "bg-gray-300 cursor-not-allowed text-gray-500 shadow-none"
                   : step === 3
